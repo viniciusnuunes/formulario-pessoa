@@ -10,13 +10,43 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var broswerSync = require('browser-sync');
 
+gulp.task('default', ['watch-tasks', 'lib', 'html-compiler', 'css-compiler', 'script-compiler', 'server']);
 
 // iniciando o servidor
 gulp.task('server', function(){
     broswerSync.init({
         server: {
-            baseDir: 'dev'
+            baseDir: 'dist'
         }
     });
+});
+
+gulp.task('html-compiler', function(){
+    gulp.src('./dev/*.html')
+    .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('css-compiler', function(){
+    gulp.src('./dev/css/*.css')
+    .pipe(gulp.dest('./dist/css'));
+});
+
+gulp.task('script-compiler', function(){
+    gulp.src('./dev/js/*.js')
+    .pipe(gulp.dest('./dist/js'));
+});
+
+gulp.task('lib', function(){
+    return gulp.src(['./node_modules/bootstrap/dist/js/bootstrap.min.js', 
+                     './node_modules/jquery/dist/jquery.min.js',
+                     './node_modules/angular/angular.min.js'])
+    .pipe(concat('lib.js'))
+    .pipe(gulp.dest('./dist/lib'));
+});
+
+gulp.task('watch-tasks', function(){
+    gulp.watch('./dev/*.html', ['html-compiler']).on('change', broswerSync.reload);
+    gulp.watch('./dev/css/*.css', ['css-compiler']).on('change', broswerSync.reload);
+    gulp.watch('./dev/js/*.js', ['script.compiler']).on('change', broswerSync.reload);
 });
 
