@@ -1,0 +1,25 @@
+{
+  "name": "form-pessoa",
+  "version": "1.0.0",
+  "description": "Formulario de pessoas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vinicius Nunes - Filipe Loiola",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {
+    "angular": "^1.6.9",
+    "bootstrap": "^3.3.7",
+    "install": "^0.11.0",
+    "jquery": "^3.3.1",
+    "npm": "^5.8.0"
+  }
+}
