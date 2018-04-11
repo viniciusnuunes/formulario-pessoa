@@ -54,6 +54,6 @@ gulp.task('lib', function(){
 gulp.task('watch-tasks', function(){
     gulp.watch('./dev/*.html', ['html-compiler']).on('change', broswerSync.reload);
     gulp.watch('./dev/css/*.css', ['css-compiler']).on('change', broswerSync.reload);
-    gulp.watch('./dev/js/*.js', ['script.compiler']).on('change', broswerSync.reload);
+    gulp.watch('./dev/js/*.js', ['script-compiler']).on('change', broswerSync.reload);
 });
 
