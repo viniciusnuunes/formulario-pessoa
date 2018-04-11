@@ -10,7 +10,7 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var broswerSync = require('browser-sync');
 
-gulp.task('default', ['watch-tasks', 'lib', 'html-compiler', 'css-compiler', 'script-compiler', 'server']);
+gulp.task('default', ['lib', 'bootstrap', 'html-compiler', 'css-compiler', 'script-compiler', 'watch-tasks', 'server']);
 
 // iniciando o servidor
 gulp.task('server', function(){
@@ -36,10 +36,17 @@ gulp.task('script-compiler', function(){
     .pipe(gulp.dest('./dist/js'));
 });
 
+gulp.task('bootstrap', function(){
+    gulp.src('./node_modules/bootstrap/dist/css/bootstrap.min.css')
+    .pipe(gulp.dest('./dist/css/bootstrap'));
+    gulp.src('./node_modules/bootstrap/dist/css/bootstrap-theme.min.css')
+    .pipe(gulp.dest('./dist/css/bootstrap'));
+});
+
 gulp.task('lib', function(){
-    return gulp.src(['./node_modules/bootstrap/dist/js/bootstrap.min.js', 
-                     './node_modules/jquery/dist/jquery.min.js',
-                     './node_modules/angular/angular.min.js'])
+    return gulp.src(['./node_modules/jquery/dist/jquery.min.js',
+                     './node_modules/angular/angular.min.js',
+                     './node_modules/bootstrap/dist/js/bootstrap.min.js',])
     .pipe(concat('lib.js'))
     .pipe(gulp.dest('./dist/lib'));
 });
