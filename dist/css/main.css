@@ -1,0 +1,10 @@
+.cadastro-box {
+    box-shadow: 1px 1px 10px 1px grey;
+    border-radius: 7px;
+    padding: 40px;
+    margin-top: 15px;
+}
+
+.dados-cliente {
+    text-align: center;
+}

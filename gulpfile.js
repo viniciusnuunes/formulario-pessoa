@@ -41,6 +41,12 @@ gulp.task('bootstrap', function(){
     .pipe(gulp.dest('./dist/css/bootstrap'));
     gulp.src('./node_modules/bootstrap/dist/css/bootstrap-theme.min.css')
     .pipe(gulp.dest('./dist/css/bootstrap'));
+    gulp.src(['./node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.eot',
+              './node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.svg',
+              './node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf',
+              './node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff',
+              './node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2'])
+    .pipe(gulp.dest('./dist/css/fonts'));
 });
 
 gulp.task('lib', function(){
