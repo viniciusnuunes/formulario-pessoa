@@ -1,10 +1,18 @@
 .cadastro-box {
     box-shadow: 1px 1px 10px 1px grey;
     border-radius: 7px;
-    padding: 40px;
+    padding: 20px;
     margin-top: 15px;
 }
 
 .dados-cliente {
     text-align: center;
+}
+
+body {
+   // background: url('../img/bg2.png') no-repeat fixed center;
+}
+
+.btn-fix-size {
+    width: 90px;
 }
