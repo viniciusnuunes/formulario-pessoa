@@ -27,12 +27,12 @@ gulp.task('html-compiler', function(){
 });
 
 gulp.task('css-compiler', function(){
-    gulp.src('./dev/css/*.css')
+    gulp.src('./dev/css/**/*.css')
     .pipe(gulp.dest('./dist/css'));
 });
 
 gulp.task('script-compiler', function(){
-    gulp.src('./dev/js/*.js')
+    gulp.src('./dev/js/**/*.js')
     .pipe(gulp.dest('./dist/js'));
 });
 
@@ -52,8 +52,8 @@ gulp.task('lib', function(){
 });
 
 gulp.task('watch-tasks', function(){
-    gulp.watch('./dev/*.html', ['html-compiler']).on('change', broswerSync.reload);
-    gulp.watch('./dev/css/*.css', ['css-compiler']).on('change', broswerSync.reload);
-    gulp.watch('./dev/js/*.js', ['script-compiler']).on('change', broswerSync.reload);
+    gulp.watch('./dev/**/*.html', ['html-compiler']).on('change', broswerSync.reload);
+    gulp.watch('./dev/css/**/*.css', ['css-compiler']).on('change', broswerSync.reload);
+    gulp.watch('./dev/js/**/*.js', ['script-compiler']).on('change', broswerSync.reload);
 });
 
