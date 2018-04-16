@@ -17,73 +17,88 @@
     <body ng-app="app" ng-controller="IndexController">
         <div class="container">            
             
-            <div class="cadastro-box col-sm-8 col-sm-offset-2">
+            <div class="cadastro-box col-sm-6 col-sm-offset-3">
                 <div class="row">
                     <h4 class="dados-cliente col-md-10 col-md-offset-1">Dados do Cliente <small>*campos obrigatórios</small></h4>
                 </div>
                 <br>
                 <form class="form">                    
                     <div class="row">
-                        <div class="form-group col-sm-3">
-                            <label for="codigo">Código</label>
-                            <input type="number" class="form-control" id="codigo" placeholder="Código">
-                        </div>
-                        <div class="form-group col-sm-5">
-                            <label for="cpf">CPF <span class="red">*</span></label>
-                            <input type="text" class="form-control" id="cpf" placeholder="CPF">
-                        </div>
+                        <div class="form-group col-sm-6">                            
+                            <input type="text" class="form-control" id="codigo" placeholder="Código do cliente">
+                        </div>     
+                        <div class="form-group col-sm-6">                                                                                    
+                            <input type="text" class="form-control" id="cpf" placeholder="CPF">                            
+                        </div>                   
                     </div>
-                    <div class="row">
-                        <div class="form-group col-sm-7">
-                            <label for="nome">Nome <span class="red">*</span></label>
+                    <div class="form-group">        
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fas fa-user"></i></span>
                             <input type="text" class="form-control" id="nome" placeholder="Nome Completo">
-                        </div>
-                        <div class="form-group col-sm-5">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email">
-                        </div>
-                    </div>                                        
-                    <div class="row">
+                        </div>                    
                         
                     </div>
-                    <div class="row align-bottom">
-                        <div class="form-group col-sm-2">
-                            <label for="cep">CEP <span class="red">*</span></label>
-                            <input type="number" class="form-control" id="cep" placeholder="CEP">
-                        </div>
-                        <div class="form-group col-sm-2">
-                            <button type="submit" class="btn btn-info" title="Procurar" alt="Procurar">
-                                    <span class=""><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                        <div class="form-group col-sm-8">
-                            <label for="endereco">Endereço <span class="red">*</span></label>                            
-                            <input type="text" class="form-control" id="endereco" placeholder="Endereço">                            
+                    <div class="form-group">                            
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fas fa-at"></i></span>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-4">
-                            <label for="n-casa">Número <span class="red">*</span></label>                            
+                        <div class="form-group col-sm-6"> 
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></span>
+                                <input type="text" class="form-control" id="codigo" placeholder="Telefone">
+                            </div>                           
+                        </div>     
+                        <div class="form-group col-sm-6">  
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-phone"></i></span>
+                                <input type="text" class="form-control" id="cpf" placeholder="Residencial">                            
+                            </div>                                                                                  
+                        </div>                   
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="cep" placeholder="CEP">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
+                                </span>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="form-group">      
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fas fa-id-card"></i></span>
+                            <input type="text" class="form-control" id="endereco" placeholder="Endereço">                            
+                        </div>                  
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-3">                                                      
                             <input type="text" class="form-control" id="n-casa" placeholder="Número">                            
                         </div>                        
-                        <div class="form-group col-sm-4">
-                            <label for="compl">Complemento</label>                            
+                        <div class="form-group col-sm-5">                                                    
+                            <input type="text" class="form-control" id="bairro" placeholder="Bairro">                            
+                        </div>
+                        <div class="form-group col-sm-4">                                                    
                             <input type="text" class="form-control" id="compl" placeholder="Complemento">                            
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <label for="bairro">Bairro <span class="red">*</span></label>                            
-                            <input type="text" class="form-control" id="bairro" placeholder="Bairro">                            
+                    <div class="row">                        
+                        <div class="form-group col-sm-3">                                                 
+                            <input type="text" class="form-control" id="numero_cidade" placeholder="Nº Cidade">                            
                         </div>
-                        <div class="form-group col-sm-6">
-                            <label for="cidade">Cidade <span class="red">*</span></label>                            
+                        <div class="form-group col-sm-5">                                                 
                             <input type="text" class="form-control" id="cidade" placeholder="Cidade">                            
+                        </div>
+                        <div class="form-group col-sm-4">                                                 
+                            <input type="text" class="form-control" id="uf" placeholder="UF">                            
                         </div>
                     </div>
                     <br>
                     <div class="row">
-                        <div class="form-group col-sm-6 col-sm-offset-4">
+                        <div class="form-group text-align-center">
                             <button type="submit" class="btn btn-success btn-fix-size">
                                 <span class="" title="Gravar" alt="Gravar">Gravar</span>
                             </button>
@@ -100,5 +115,6 @@
     <script src="lib/lib.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/index-controller.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 
 </html>

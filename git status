@@ -1,0 +1,41 @@
+[33mcommit 388909a3e9cb590ee90a43d94d7f51fd0914f109[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Vinicius Nunes <viniiciuspereiira@hotmail.com>
+Date:   Thu Apr 12 17:02:49 2018 -0300
+
+    ajustes no layout do form
+
+[33mcommit 508881967f8293de11b643b08ff8caded01a205c[m
+Author: Vinicius Nunes <viniiciuspereiira@hotmail.com>
+Date:   Thu Apr 12 02:05:52 2018 -0300
+
+    formulario pronto (visualmente)
+
+[33mcommit 8f8ab1979063f2ce9ff2d2c7acd9419b11773978[m
+Author: Vinicius Nunes <viniiciuspereiira@hotmail.com>
+Date:   Thu Apr 12 00:42:39 2018 -0300
+
+    ajustes pra funcionar a controller
+
+[33mcommit cb30e2f6ff7f80c9a75467114f1002655e7caeb7[m
+Author: Vinicius Nunes <viniiciuspereiira@hotmail.com>
+Date:   Wed Apr 11 00:03:16 2018 -0300
+
+    Angular Funcionando
+
+[33mcommit 3b7bc586a74e8d2cfce9784b0d311f267de7644a[m
+Author: Vinicius Nunes <viniiciuspereiira@hotmail.com>
+Date:   Tue Apr 10 23:52:40 2018 -0300
+
+    Ajuste nos arquivos de script do bootstrap, jquery e angular. Lado cliente rodando na dist e algumas tarefas novas
+
+[33mcommit 59767f18f401a53668309e3d32d7cb9f66ec3508[m
+Author: Vinicius Nunes <viniiciuspereiira@hotmail.com>
+Date:   Tue Apr 10 18:25:44 2018 -0300
+
+    incluindo as tarefas
+
+[33mcommit 3fbfbc52151cd7e05a5968fa5d0f5e00e52c721f[m
+Author: Vinicius Nunes <viniiciuspereiira@hotmail.com>
+Date:   Tue Apr 10 15:24:34 2018 -0300
+
+    servidor rodando
