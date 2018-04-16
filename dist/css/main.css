@@ -16,3 +16,12 @@ body {
 .btn-fix-size {
     width: 90px;
 }
+
+.align-bottom{
+    display: flex; 
+    align-items: flex-end;
+}
+
+.red{
+    color: #FF0000;
+}   

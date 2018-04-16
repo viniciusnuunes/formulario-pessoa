@@ -29,13 +29,13 @@
                             <input type="number" class="form-control" id="codigo" placeholder="Código">
                         </div>
                         <div class="form-group col-sm-5">
-                            <label for="cpf">CPF *</label>
+                            <label for="cpf">CPF <span class="red">*</span></label>
                             <input type="text" class="form-control" id="cpf" placeholder="CPF">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-7">
-                            <label for="nome">Nome *</label>
+                            <label for="nome">Nome <span class="red">*</span></label>
                             <input type="text" class="form-control" id="nome" placeholder="Nome Completo">
                         </div>
                         <div class="form-group col-sm-5">
@@ -46,19 +46,24 @@
                     <div class="row">
                         
                     </div>
-                    <div class="row">
+                    <div class="row align-bottom">
                         <div class="form-group col-sm-2">
-                            <label for="cep">CEP *</label>
+                            <label for="cep">CEP <span class="red">*</span></label>
                             <input type="number" class="form-control" id="cep" placeholder="CEP">
                         </div>
+                        <div class="form-group col-sm-2">
+                            <button type="submit" class="btn btn-info" title="Procurar" alt="Procurar">
+                                    <span class=""><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </div>
                         <div class="form-group col-sm-8">
-                            <label for="endereco">Endereço *</label>                            
+                            <label for="endereco">Endereço <span class="red">*</span></label>                            
                             <input type="text" class="form-control" id="endereco" placeholder="Endereço">                            
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-4">
-                            <label for="n-casa">Número *</label>                            
+                            <label for="n-casa">Número <span class="red">*</span></label>                            
                             <input type="text" class="form-control" id="n-casa" placeholder="Número">                            
                         </div>                        
                         <div class="form-group col-sm-4">
@@ -68,11 +73,11 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
-                            <label for="bairro">Bairro *</label>                            
+                            <label for="bairro">Bairro <span class="red">*</span></label>                            
                             <input type="text" class="form-control" id="bairro" placeholder="Bairro">                            
                         </div>
                         <div class="form-group col-sm-6">
-                            <label for="cidade">Cidade *</label>                            
+                            <label for="cidade">Cidade <span class="red">*</span></label>                            
                             <input type="text" class="form-control" id="cidade" placeholder="Cidade">                            
                         </div>
                     </div>
@@ -80,16 +85,15 @@
                     <div class="row">
                         <div class="form-group col-sm-6 col-sm-offset-4">
                             <button type="submit" class="btn btn-success btn-fix-size">
-                                <span class="">Gravar</span>
+                                <span class="" title="Gravar" alt="Gravar">Gravar</span>
                             </button>
                             <button type="submit" class="btn btn-danger btn-fix-size">
-                                <span class="">Cancelar</span>
+                                <span class="" title="Cancelar" alt="Cancelar">Cancelar</span>
                             </button>
                         </div>
                     </div>
                 </form> <!-- fim formulario -->
             </div> <!-- fim cadastro-box -->
-
         </div> <!-- fim container -->
     </body>
 
