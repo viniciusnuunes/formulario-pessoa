@@ -21,7 +21,7 @@
 }
 
 body {
-   // background: url('../img/bg2.png') no-repeat fixed center;
+  background: url('../img/bg_full_2.jpg') no-repeat fixed center;   
 }
 
 .btn-fix-size {
@@ -34,4 +34,12 @@ body {
 
 .text-align-center {
     text-align: center;
+}
+
+input.ng-touched.ng-invalid {
+  border-color: red;
+}
+
+input.ng-touched.ng-valid {
+  border-color: green;
 }
