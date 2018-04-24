@@ -1,1 +1,1 @@
-app.controller("IndexController",["$scope",function(o,e,t){baseUrl="http://187.111.10.182:8998/ideia/core/pessoa/11015472788",t.get(baseUrl).then(function(e){o.resultado=e.data,console.log(e)})}]);
+app.controller("IndexController",["$scope","$http",function(e,o){baseUrl="http://187.111.10.182:8998/ideia/core/pessoa/11015472788",o({method:"GET",url:baseUrl}).then(function(o){e.resultado=o.data,console.log("Resultado: ",o)},function(o){e.resultado=o.data,console.log("Algo deu errado: ",o)})}]);
