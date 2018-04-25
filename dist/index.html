@@ -28,27 +28,27 @@
                             <input type="text" class="form-control" id="codigo" placeholder="Código do cliente" ng-model="pessoa.codigo" readonly>
                         </div>     
                         <div class="form-group col-sm-6">                                                                                    
-                            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" ng-model="pessoa.cpf" required>                                                        
+                            <input type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF ou CNPJ" ng-model="pessoa.cpf_cnpj" required onkeydown="javascript:return aplica_mascara_cpfcnpj(this,18,event)" onkeyup="javascript:return aplica_mascara_cpfcnpj(this,18,event)">                                                        
                         </div>                  
                     </div>
                     <div class="form-group">        
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo" ng-model="pessoa.nome_completo" required>                            
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo" ng-model="pessoa.nome_completo" ng-pattern="validacao_somente_letras" required>                            
                         </div>                    
                         
                     </div>
                     <div class="form-group">                            
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-at"></i></span>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" ng-model="pessoa.email" required>                                                        
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" ng-model="pessoa.email" ng-pattern="validacao_email" required>                                                        
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6"> 
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></span>
-                                <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" ng-model="pessoa.telefone" required>
+                                <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" ng-model="pessoa.telefone" ng-pattern="validacao_telefone" required>
                             </div>                           
                         </div>     
                         <div class="form-group col-sm-6">  
@@ -107,19 +107,22 @@
                     <div ng-if="formulario.nome.$touched && formulario.nome.$invalid">
                         <div class="alert alert-danger">
                             <span ng-if="formulario.nome.$error.required">É obrigatório informar o Nome!</span>
+                            <span ng-if="formulario.nome.$error.pattern">O campo nome aceita somente letras!</span>
                         </div>
-                    </div>
+                    </div>               
                     
                     <div ng-if="formulario.email.$touched && formulario.email.$invalid">
                         <div class="alert alert-danger">                            
                             <span ng-if="formulario.email.$error.required">É obrigatório informar o Email!</span>
-                            <span ng-if="formulario.email.$error.email">Email inválido</span>
+                            <span ng-if="formulario.email.$error.pattern">Email inválido. Utilize o formato (exemplo@ideia.com)</span>
+                            
                         </div>
                     </div>  
                     
                     <div ng-if="formulario.telefone.$touched && formulario.telefone.$invalid">
                         <div class="alert alert-danger">
                             <span ng-if="formulario.telefone.$error.required">É obrigatório informar o Telefone!</span>
+                            <span ng-if="formulario.telefone.$error.pattern">Telefone Inválido!</span>
                         </div>
                     </div>
 
@@ -184,6 +187,7 @@
 
     <script src="lib/lib.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/index.js"></script>
     <script src="js/controllers/index-controller.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 
