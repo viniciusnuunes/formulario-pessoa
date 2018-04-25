@@ -36,10 +36,10 @@ body {
     text-align: center;
 }
 
-input.ng-touched.ng-invalid {
+input.ng-touched.ng-invalid, input.ng-untouched.ng-invalid, input.ng-invalid-required {
   border-color: red;
 }
 
-input.ng-touched.ng-valid {
+input.ng-touched.ng-valid, input.ng-untouched.ng-valid {
   border-color: green;
 }

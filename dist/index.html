@@ -25,43 +25,43 @@
                 <form class="form" name="formulario" ng-submit="criarCliente()" novalidate>                    
                     <div class="row">
                         <div class="form-group col-sm-6">                            
-                            <input type="text" class="form-control" id="codigo" placeholder="Código do cliente" ng-model="novoCliente.codigo" readonly>
+                            <input type="text" class="form-control" id="codigo" placeholder="Código do cliente" ng-model="pessoa.codigo" readonly>
                         </div>     
                         <div class="form-group col-sm-6">                                                                                    
-                            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" ng-model="novoCliente.cpf" required>                                                        
-                        </div>                   
+                            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" ng-model="pessoa.cpf" required>                                                        
+                        </div>                  
                     </div>
                     <div class="form-group">        
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo" ng-model="novoCliente.nome_completo" required>                            
+                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome Completo" ng-model="pessoa.nome_completo" required>                            
                         </div>                    
                         
                     </div>
                     <div class="form-group">                            
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-at"></i></span>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" ng-model="novoCliente.email" required>                                                        
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" ng-model="pessoa.email" required>                                                        
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6"> 
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></span>
-                                <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" ng-model="novoCliente.telefone" required>
+                                <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" ng-model="pessoa.telefone" required>
                             </div>                           
                         </div>     
                         <div class="form-group col-sm-6">  
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fas fa-phone"></i></span>
-                                <input type="text" class="form-control" name="residencial" id="residencial" placeholder="Residencial" ng-model="novoCliente.residencial">                            
+                                <input type="text" class="form-control" name="residencial" id="residencial" placeholder="Residencial" ng-model="pessoa.residencial">                            
                             </div>                                                                                  
                         </div>                   
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" ng-model="novoCliente.cep" required>
+                                <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" ng-model="pessoa.cep" required>
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
                                 </span>
@@ -71,29 +71,29 @@
                     <div class="form-group">      
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-id-card"></i></span>
-                            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço" ng-model="novoCliente.endereco" required>                            
+                            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço" ng-model="pessoa.endereco" required>                            
                         </div>                  
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-3">                                                      
-                            <input type="text" class="form-control" name="numero_casa" id="numero_casa" placeholder="Número" ng-model="novoCliente.numero_casa" required>                            
+                            <input type="text" class="form-control" name="numero_casa" id="numero_casa" placeholder="Número" ng-model="pessoa.numero_casa" required>                            
                         </div>                        
                         <div class="form-group col-sm-5">                                                    
-                            <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" ng-model="novoCliente.bairro" required>                            
+                            <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" ng-model="pessoa.bairro" required>                            
                         </div>
                         <div class="form-group col-sm-4">                                                    
-                            <input type="text" class="form-control" name="complemento" id="compl" placeholder="Complemento" ng-model="novoCliente.complemento">                            
+                            <input type="text" class="form-control" name="complemento" id="compl" placeholder="Complemento" ng-model="pessoa.complemento">                            
                         </div>
                     </div>
                     <div class="row">                        
                         <div class="form-group col-sm-3">                                                 
-                            <input type="text" class="form-control" name="numero_cidade" id="numero_cidade" placeholder="Nº Cidade" ng-model="novoCliente.numero_cidade" required>                            
+                            <input type="text" class="form-control" name="numero_cidade" id="numero_cidade" placeholder="Nº Cidade" ng-model="pessoa.numero_cidade" required>                            
                         </div>
                         <div class="form-group col-sm-7">                                                 
-                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" ng-model="novoCliente.cidade" required>                            
+                            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" ng-model="pessoa.cidade" required>                            
                         </div>
                         <div class="form-group col-sm-2">                                                 
-                            <input type="text" class="form-control" name="uf" id="uf" placeholder="UF" ng-model="novoCliente.uf" required>                            
+                            <input type="text" class="form-control" name="uf" id="uf" placeholder="UF" ng-model="pessoa.uf" required>                            
                         </div>
                     </div>
                     
@@ -169,7 +169,7 @@
                     <br>
                     <div class="row">
                         <div class="form-group text-align-center">
-                            <button type="submit" class="btn btn-primary btn-sm btn-fix-size">
+                            <button type="submit" class="btn btn-primary btn-sm btn-fix-size" ng-disabled="formulario.$invalid">
                                 <span class="" title="Gravar" alt="Gravar">Gravar</span>
                             </button>
                             <button type="submit" class="btn btn-primary btn-sm btn-fix-size">
