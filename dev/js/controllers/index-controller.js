@@ -8,7 +8,7 @@ app.controller('IndexController', ['$scope', '$http', function($scope, $http){
     $scope.validacao_somente_numeros = /^[0-9]*$/;
     $scope.validacao_telefone = /^[0-9]{8,9}$/;
     $scope.pessoa = {
-        codigo: "01",
+        codigo: "P101547278",
         cpf_cnpj: "11015472788",
         nome_completo: "Vinicius Nunes",
         email: "exemplo@ideia.com.br",
@@ -19,9 +19,13 @@ app.controller('IndexController', ['$scope', '$http', function($scope, $http){
         numero_casa: "102",
         bairro: "Tanque",
         complemento: "",
-        numero_cidade: "0",
-        cidade: "RIo",
+        numero_cidade: "0002",
+        cidade: "Rio de Janeiro",
         uf: "RJ"
+    };
+
+    $scope.criarCliente = function(){
+        console.log($scope.formulario);
     };
     
     // $http.get(baseUrl).then(function successCallback(response) {
