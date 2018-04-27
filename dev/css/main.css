@@ -36,10 +36,14 @@ body {
     text-align: center;
 }
 
-input.ng-touched.ng-invalid, input.ng-untouched.ng-invalid, input.ng-invalid-required {
+/* input.ng-pristine, input.ng-empty, input.ng-valid.ng-empty {
+    border-color: none;
+} */
+
+input.ng-touched.ng-invalid, input.ng-not-empty.ng-invalid, input.ng-not-empty.ng-invalid-required, input.ng-empty.ng-invalid-required {
   border-color: red;
 }
 
-input.ng-touched.ng-valid, input.ng-untouched.ng-valid {
+input.ng-touched.ng-valid, input.ng-not-empty.ng-valid {
   border-color: green;
 }
