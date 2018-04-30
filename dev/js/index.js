@@ -4,6 +4,21 @@ function BloquearEspaco(event) {
 };
 
 
+// Funcção de salvar imagem e fazer preview
+function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#imagem-perfil')
+          .attr('src', e.target.result)
+          .width(150)
+          .height(200);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+};
+
+
 //Aplica a máscara no campo
 //Função para ser utilizada nos eventos do input para formatação dinâmica
 function aplica_mascara_cpfcnpj(campo,tammax,teclapres) {

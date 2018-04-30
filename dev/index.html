@@ -23,13 +23,16 @@
                 </div>
                 <br>
                 <form class="form" name="formulario" ng-submit="criarCliente()" novalidate>                    
-                    <div class="row">
-                        <div class="form-group col-sm-6">                            
+                    <div class="form-group col-sm-6 col-sm-offset-4">
+                        <img class="img-responsive img-rounded" id="imagem-perfil" src="#" alt="Foto do Perfil" width="140" height="140" />
+                        <input type='file' onchange="readURL(this);" />
+                    </div> 
+                    <div class="row">                        <div class="form-group col-sm-6">                            
                             <input type="text" class="form-control" id="codigo" placeholder="Código do cliente" ng-model="pessoa.codigo" readonly>
                         </div>     
                         <div class="form-group col-sm-6">                                                                                    
                             <input type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF ou CNPJ" ng-model="pessoa.cpf_cnpj" required onkeydown="javascript:return aplica_mascara_cpfcnpj(this,18,event)" onkeyup="javascript:return aplica_mascara_cpfcnpj(this,18,event)">                                                        
-                        </div>                  
+                        </div>                                         
                     </div>
                     <div class="form-group">        
                         <div class="input-group">
