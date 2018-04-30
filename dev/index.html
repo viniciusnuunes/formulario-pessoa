@@ -58,20 +58,15 @@
                             </div>                                                                                  
                         </div>                   
                     </div>
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" ng-model="pessoa.cep" ng-pattern="validacao_somente_numeros" ng-minlength="8" ng-maxlength="8" onkeypress="return BloquearEspaco(event)" required>
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-info" ng-disabled="formulario.cep.$invalid"><span class="glyphicon glyphicon-search"></span></button>
-                                </span>
-                            </div>
-                        </div>                        
+                    <div class="row">                        
+                        <div class="form-group col-sm-4">
+                            <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" ng-model="pessoa.cep" ng-pattern="validacao_somente_numeros" ng-minlength="8" ng-maxlength="8" onkeypress="return BloquearEspaco(event)" required>                                
+                        </div>                                             
                     </div>
                     <div class="form-group">      
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-id-card"></i></span>
-                            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço" ng-model="pessoa.endereco" required>                            
+                            <input type="text" class="form-control" name="rua" id="rua" placeholder="Endereço" ng-model="pessoa.rua" required>                            
                         </div>                  
                     </div>
                     <div class="row">
@@ -85,10 +80,7 @@
                             <input type="text" class="form-control" name="complemento" id="compl" placeholder="Complemento" ng-model="pessoa.complemento">                            
                         </div>
                     </div>
-                    <div class="row">                        
-                        <div class="form-group col-sm-3">                                                 
-                            <input type="text" class="form-control" name="numero_cidade" id="numero_cidade" placeholder="Nº Cidade" ng-model="pessoa.numero_cidade" required>                            
-                        </div>
+                    <div class="row">                                                
                         <div class="form-group col-sm-7">                                                 
                             <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" ng-model="pessoa.cidade" required>                            
                         </div>
@@ -134,9 +126,9 @@
                         </div>
                     </div>
 
-                    <div ng-if="formulario.endereco.$touched && formulario.endereco.$invalid">
+                    <div ng-if="formulario.rua.$touched && formulario.rua.$invalid">
                         <div class="alert alert-danger">
-                            <span ng-if="formulario.endereco.$error.required">É obrigatório informar o Endereço!</span>
+                            <span ng-if="formulario.rua.$error.required">É obrigatório informar o Endereço!</span>
                         </div>
                     </div>
 
@@ -151,13 +143,7 @@
                         <div class="alert alert-danger">
                             <span ng-if="formulario.bairro.$error.required">É obrigatório informar o Bairro!</span>
                         </div>
-                    </div>
-
-                    <div ng-if="formulario.numero_cidade.$touched && formulario.numero_cidade.$invalid">
-                        <div class="alert alert-danger">
-                            <span ng-if="formulario.numero_cidade.$error.required">É obrigatório informar o Número da Cidade!</span>
-                        </div>
-                    </div>
+                    </div>                    
 
                     <div ng-if="formulario.cidade.$touched && formulario.cidade.$invalid">
                         <div class="alert alert-danger">
@@ -192,6 +178,7 @@
     <script src="lib/lib.js"></script>
     <script src="js/app.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/consulta_cep.js"></script>
     <script src="js/controllers/index-controller.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 

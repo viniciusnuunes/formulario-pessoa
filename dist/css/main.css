@@ -40,7 +40,7 @@ body {
     border-color: none;
 } */
 
-input.ng-touched.ng-invalid, input.ng-not-empty.ng-invalid, input.ng-not-empty.ng-invalid-required, input.ng-empty.ng-invalid-required {
+input.ng-touched.ng-invalid, input.ng-not-empty.ng-invalid, input.ng-not-empty.ng-invalid-required {
   border-color: red;
 }
 

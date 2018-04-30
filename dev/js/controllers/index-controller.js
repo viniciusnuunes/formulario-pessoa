@@ -7,7 +7,7 @@ app.controller('IndexController', ['$scope', '$http', function($scope, $http){
     $scope.validacao_somente_letras = /^[a-zA-Z ]{1,25}$/;
     $scope.validacao_somente_numeros = /^[0-9]*$/;
     $scope.validacao_telefone = /^[0-9]{8,9}$/;
-    $scope.pessoa = {
+    $scope.pessoas = {
         codigo: "P101547278",
         cpf_cnpj: "11015472788",
         nome_completo: "Vinicius Nunes",
@@ -15,11 +15,10 @@ app.controller('IndexController', ['$scope', '$http', function($scope, $http){
         telefone: "",
         residencial: "",
         cep: "22733150",
-        endereco: "",
+        rua: "",
         numero_casa: "102",
         bairro: "Tanque",
-        complemento: "",
-        numero_cidade: "0002",
+        complemento: "",        
         cidade: "Rio de Janeiro",
         uf: "RJ"
     };
