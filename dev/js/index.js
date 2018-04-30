@@ -1,3 +1,9 @@
+function BloquearEspaco(event) {
+    var k = event ? event.which : window.event.keyCode;
+    if (k == 32) return false;
+};
+
+
 //Aplica a máscara no campo
 //Função para ser utilizada nos eventos do input para formatação dinâmica
 function aplica_mascara_cpfcnpj(campo,tammax,teclapres) {

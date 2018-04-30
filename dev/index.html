@@ -41,27 +41,27 @@
                     <div class="form-group">                            
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-at"></i></span>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" ng-model="pessoa.email" ng-pattern="validacao_email" required>                                                        
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" ng-model="pessoa.email" ng-pattern="validacao_email" onkeypress="return BloquearEspaco(event)" required>                                                        
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6"> 
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></span>
-                                <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" ng-model="pessoa.telefone" ng-pattern="validacao_telefone" required>
+                                <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" ng-model="pessoa.telefone" ng-pattern="validacao_telefone" onkeypress="return BloquearEspaco(event)" required>
                             </div>                           
                         </div>     
                         <div class="form-group col-sm-6">  
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fas fa-phone"></i></span>
-                                <input type="text" class="form-control" name="residencial" id="residencial" placeholder="Residencial" ng-model="pessoa.residencial">                            
+                                <input type="text" class="form-control" name="residencial" id="residencial" placeholder="Residencial" ng-model="pessoa.residencial" onkeypress="return BloquearEspaco(event)">                            
                             </div>                                                                                  
                         </div>                   
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" ng-model="pessoa.cep" ng-pattern="validacao_somente_numeros" ng-minlength="8" ng-maxlength="8" required>
+                                <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" ng-model="pessoa.cep" ng-pattern="validacao_somente_numeros" ng-minlength="8" ng-maxlength="8" onkeypress="return BloquearEspaco(event)" required>
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-info" ng-disabled="formulario.cep.$invalid"><span class="glyphicon glyphicon-search"></span></button>
                                 </span>
@@ -76,10 +76,10 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-3">                                                      
-                            <input type="text" class="form-control" name="numero_casa" id="numero_casa" placeholder="Número" ng-model="pessoa.numero_casa" required>                            
+                            <input type="text" class="form-control" name="numero_casa" id="numero_casa" placeholder="Número" ng-model="pessoa.numero_casa" ng-pattern="validacao_somente_numeros" onkeypress="return BloquearEspaco(event)" required>                            
                         </div>                        
                         <div class="form-group col-sm-5">                                                    
-                            <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" ng-model="pessoa.bairro" required>                            
+                            <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" ng-model="pessoa.bairro" ng-pattern="validacao_somente_letras" required>                            
                         </div>
                         <div class="form-group col-sm-4">                                                    
                             <input type="text" class="form-control" name="complemento" id="compl" placeholder="Complemento" ng-model="pessoa.complemento">                            
@@ -93,7 +93,7 @@
                             <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" ng-model="pessoa.cidade" required>                            
                         </div>
                         <div class="form-group col-sm-2">                                                 
-                            <input type="text" class="form-control" name="uf" id="uf" placeholder="UF" ng-model="pessoa.uf" required>                            
+                            <input type="text" class="form-control" name="uf" id="uf" placeholder="UF" ng-model="pessoa.uf" ng-pattern="validacao_somente_letras" required>                            
                         </div>
                     </div>
                     
@@ -143,6 +143,7 @@
                     <div ng-if="formulario.numero_casa.$touched && formulario.numero_casa.$invalid">
                         <div class="alert alert-danger">
                             <span ng-if="formulario.numero_casa.$error.required">É obrigatório informar o Número da Casa!</span>
+                            <span ng-if="formulario.numero_casa.$error.pattern">Somente números. Caso haja letra utilize o complemento.</span>
                         </div>
                     </div>
 
@@ -160,13 +161,14 @@
 
                     <div ng-if="formulario.cidade.$touched && formulario.cidade.$invalid">
                         <div class="alert alert-danger">
-                            <span ng-if="formulario.cidade.$error.required">É obrigatório informar a Cidade!</span>
+                            <span ng-if="formulario.cidade.$error.required">É obrigatório informar a Cidade!</span>                            
                         </div>
                     </div>
 
                     <div ng-if="formulario.uf.$touched && formulario.uf.$invalid">
                         <div class="alert alert-danger">
                             <span ng-if="formulario.uf.$error.required">É obrigatório informar a UF!</span>
+                            <span ng-if="formulario.uf.$error.pattern">Utilize somente letras!</span>
                         </div>
                     </div>
                     <!-- Fim das validações-->
