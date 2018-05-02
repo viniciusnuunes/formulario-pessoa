@@ -23,15 +23,29 @@
                 </div>
                 <br>
                 <form class="form" name="formulario" ng-submit="criarCliente()" novalidate>                    
-                    <div class="form-group col-sm-6 col-sm-offset-4">
-                        <img class="img-responsive img-rounded" id="imagem-perfil" src="#" alt="Foto do Perfil" width="140" height="140" />
-                        <input type='file' onchange="readURL(this);" />
-                    </div> 
-                    <div class="row">                        <div class="form-group col-sm-6">                            
-                            <input type="text" class="form-control" id="codigo" placeholder="Código do cliente" ng-model="pessoa.codigo" readonly>
+                    <div class="form-group">
+                        <div class="input-group image-preview">
+                            <input type="text" class="form-control image-preview-filename" disabled="disabled" placeholder="Inserir uma foto de perfil. Estilo retrato."> <!-- don't give a name === doesn't send on POST/GET -->
+                            <span class="input-group-btn">
+                                <!-- image-preview-clear button -->
+                                <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                    <span class="glyphicon glyphicon-remove"></span> Limpar
+                                </button>
+                                <!-- image-preview-input -->
+                                <div class="btn btn-default image-preview-input">
+                                    <span class="glyphicon glyphicon-folder-open"></span>
+                                    <span class="image-preview-input-title">Procurar</span>
+                                    <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">                            
+                            <input type="text" class="form-control" id="codigo" placeholder="Código do cliente" ng-model="pessoa.codigo" disabled="disabled">
                         </div>     
                         <div class="form-group col-sm-6">                                                                                    
-                            <input type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF ou CNPJ" ng-model="pessoa.cpf_cnpj" required onkeydown="javascript:return aplica_mascara_cpfcnpj(this,18,event)" onkeyup="javascript:return aplica_mascara_cpfcnpj(this,18,event)">                                                        
+                            <input type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF ou CNPJ" ng-model="pessoa.cpf_cnpj" onBlur="validar(this);">
                         </div>                                         
                     </div>
                     <div class="form-group">        
@@ -70,21 +84,22 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-id-card"></i></span>
                             <input type="text" class="form-control" name="rua" id="rua" placeholder="Endereço" ng-model="pessoa.rua" required>                            
-                        </div>                  
+                        </div>  
+                        {{pessoa.rua}}                
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-3">                                                      
+                        <div class="form-group col-sm-4">                                                      
                             <input type="text" class="form-control" name="numero_casa" id="numero_casa" placeholder="Número" ng-model="pessoa.numero_casa" ng-pattern="validacao_somente_numeros" onkeypress="return BloquearEspaco(event)" required>                            
-                        </div>                        
-                        <div class="form-group col-sm-5">                                                    
-                            <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" ng-model="pessoa.bairro" ng-pattern="validacao_somente_letras" required>                            
-                        </div>
+                        </div>                                               
                         <div class="form-group col-sm-4">                                                    
                             <input type="text" class="form-control" name="complemento" id="compl" placeholder="Complemento" ng-model="pessoa.complemento">                            
                         </div>
                     </div>
-                    <div class="row">                                                
-                        <div class="form-group col-sm-7">                                                 
+                    <div class="row">      
+                        <div class="form-group col-sm-4">                                                    
+                            <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" ng-model="pessoa.bairro" ng-pattern="validacao_somente_letras" required>                            
+                        </div>                                          
+                        <div class="form-group col-sm-6">                                                 
                             <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" ng-model="pessoa.cidade" required>                            
                         </div>
                         <div class="form-group col-sm-2">                                                 
@@ -181,6 +196,7 @@
     <script src="lib/lib.js"></script>
     <script src="js/app.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/validacao_cpf_cnpj.js"></script>
     <script src="js/consulta_cep.js"></script>
     <script src="js/controllers/index-controller.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>

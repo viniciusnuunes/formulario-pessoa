@@ -38,7 +38,9 @@ gulp.task('css-compiler', function(){
 /* copiando e minificando o JS */
 gulp.task('script-compiler', function(){
     gulp.src('./dev/js/**/*.js')
-    .pipe(uglify())
+    .pipe(uglify().on('error', function(e){
+        console.log(e);
+    }))
     .pipe(gulp.dest('./dist/js'));
 });
 

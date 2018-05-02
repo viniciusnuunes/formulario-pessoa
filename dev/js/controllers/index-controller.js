@@ -7,7 +7,7 @@ app.controller('IndexController', ['$scope', '$http', function($scope, $http){
     $scope.validacao_somente_letras = /^[a-zA-Z ]{1,25}$/;
     $scope.validacao_somente_numeros = /^[0-9]*$/;
     $scope.validacao_telefone = /^[0-9]{8,9}$/;
-    $scope.pessoas = {
+    $scope.pessoa = {
         codigo: "P101547278",
         cpf_cnpj: "11015472788",
         nome_completo: "Vinicius Nunes",
