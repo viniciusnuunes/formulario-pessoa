@@ -45,7 +45,7 @@
                             <input type="text" class="form-control" id="codigo" placeholder="Código do cliente" ng-model="pessoa.codigo" disabled="disabled">
                         </div>     
                         <div class="form-group col-sm-6">                                                                                    
-                            <input type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF ou CNPJ" ng-model="pessoa.cpf_cnpj" onBlur="validar(this);">
+                            <input type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF ou CNPJ" ng-model="pessoa.cpf_cnpj" ng-blur="validar(this)">
                         </div>                                         
                     </div>
                     <div class="form-group">        
@@ -180,7 +180,7 @@
                     <br>
                     <div class="row">
                         <div class="form-group text-align-center">
-                            <button type="submit" class="btn btn-default btn-sm btn-fix-size" ng-disabled="formulario.$invalid">
+                            <button type="submit" class="btn btn-default btn-sm btn-fix-size" n-disabled="formulario.$invalid">
                                 <span class="" title="Gravar" alt="Gravar">Gravar</span>
                             </button>
                             <button type="submit" class="btn btn-default btn-sm btn-fix-size">

@@ -26,6 +26,66 @@ app.controller('IndexController', ['$scope', '$http', function($scope, $http){
     $scope.criarCliente = function(){
         console.log($scope.formulario);
     };
+
+    // função de validação
+    $scope.validar = function(obj) {
+        valor = obj.pessoa.cpf_cnpj;
+        tam = valor.length;
+        console.log(valor);
+        console.log(tam);
+
+        if(!(tam == 11 || tam == 14)) {
+            alert(valor + "não é válido")
+            return false;
+        }
+
+        // se for CPF
+        if(tam == 11) {
+            if(!validaCPF(valor)) {
+                alert("O CPF " + valor + " não é válido!");
+                return false;
+            }
+            alert("CPF válido!")
+            obj.value = maskCPF(valor);
+            return true;
+        }
+
+        // se for CNPJ
+        if(tam == 14) {
+            if(!validaCNPJ(valor)) {
+                alert("O CNPJ " + valor + " não é válido!");
+                return false
+            }
+            alert("CNPJ válido!")
+            obj.value = maskCNPJ(valor);
+            return true;
+        }
+    } // fim do validar
+
+    $scope.validaCPF = function(s) {
+        var c = s.substr(0,9);
+        var dv = s.substr(9,2);
+        var d1 = 0;
+        for (var i=0; i<9; i++) {
+            d1 += c.charAt(i)*(10-i);
+         }
+        if (d1 == 0) return false;
+        d1 = 11 - (d1 % 11);
+        if (d1 > 9) d1 = 0;
+        if (dv.charAt(0) != d1){
+            return false;
+        }
+        d1 *= 2;
+        for (var i = 0; i < 9; i++)	{
+             d1 += c.charAt(i)*(11-i);
+        }
+        d1 = 11 - (d1 % 11);
+        if (d1 > 9) d1 = 0;
+        if (dv.charAt(1) != d1){
+            return false;
+        }
+        return true;
+    }
     
     // $http.get(baseUrl).then(function successCallback(response) {
                 
