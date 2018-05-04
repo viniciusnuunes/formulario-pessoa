@@ -28,30 +28,21 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
     };
 
     // função de validação
-<<<<<<< HEAD
     $scope.validaCampoCpfCnpj = function(obj) {
-=======
-    $scope.validar = function(obj) {
->>>>>>> 6459f38888114c8e94d1ff655c3abf1cef543473
         valor = (obj.pessoa.cpf_cnpj).replace(/\D/g,'');
         tam = valor.length;
         console.log(valor);
         console.log(tam);
 
         if(!(tam == 11 || tam == 14)) {
-<<<<<<< HEAD
             $window.alert("Dígitos Inválidos")
             $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
-=======
-            alert("CPF ou CNPJ inválido")
->>>>>>> 6459f38888114c8e94d1ff655c3abf1cef543473
             return false;
         }
 
         // se for CPF
         if(tam == 11) {
             if(!this.validaCPF(valor)) {
-<<<<<<< HEAD
                 $window.alert("O CPF " + valor + " não é válido");
                 $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
                 return false;
@@ -59,20 +50,12 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
             // alert("CPF válido!")
             $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", true);
             obj.pessoa.cpf_cnpj = this.maskCPF(valor);
-=======
-                alert("O CPF " + valor + " não é válido!");
-                return false;
-            }
-            alert("CPF válido!")
-            obj.pessoa.cpf_cnpj = maskCPF(valor);
->>>>>>> 6459f38888114c8e94d1ff655c3abf1cef543473
             return true;
         }
 
         // se for CNPJ
         if(tam == 14) {
             if(!this.validaCNPJ(valor)) {
-<<<<<<< HEAD
                 $window.alert("O CNPJ " + valor + " não é válido");
                 $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
                 return false
@@ -80,13 +63,6 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
             // alert("CNPJ válido!")
             $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", true);
             obj.pessoa.cpf_cnpj = this.maskCNPJ(valor);
-=======
-                alert("O CNPJ " + valor + " não é válido!");
-                return false
-            }
-            alert("CNPJ válido!")
-            obj.pessoa.cpf_cnpj = maskCNPJ(valor);
->>>>>>> 6459f38888114c8e94d1ff655c3abf1cef543473
             return true;
         }
     } // fim do validaCampoCpfCnpj
@@ -117,12 +93,8 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
         return true;
     }
 
-<<<<<<< HEAD
     // Algoritimo que valida o CNPJ
     $scope.validaCNPJ = function(CNPJ) {
-=======
-    $scope.validaCNPJ =  function(CNPJ) {
->>>>>>> 6459f38888114c8e94d1ff655c3abf1cef543473
         var a = new Array();
         var b = new Number;
         var c = [6,5,4,3,2,9,8,7,6,5,4,3,2];
@@ -142,7 +114,6 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
         return true;
     }
 
-<<<<<<< HEAD
     // Função que aplica a máscara ao CPF
     $scope.maskCPF = function(CPF){
         return CPF.substring(0,3)+"."+CPF.substring(3,6)+"."+CPF.substring(6,9)+"-"+CPF.substring(9,11);
@@ -150,15 +121,6 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
 
     // Função que aplica a máscara ao CNPJ
     $scope.maskCNPJ = function(CNPJ){
-=======
-    //	função que aplica máscara no CPF
-    function maskCPF(CPF){
-        return CPF.substring(0,3)+"."+CPF.substring(3,6)+"."+CPF.substring(6,9)+"-"+CPF.substring(9,11);
-    }
-
-    //	função que aplica máscara no CNPJ
-    function maskCNPJ(CNPJ){
->>>>>>> 6459f38888114c8e94d1ff655c3abf1cef543473
         return CNPJ.substring(0,2)+"."+CNPJ.substring(2,5)+"."+CNPJ.substring(5,8)+"/"+CNPJ.substring(8,12)+"-"+CNPJ.substring(12,14);	
     }
     
