@@ -17,7 +17,7 @@
     <body ng-app="app" ng-controller="IndexController">
         <div class="container">            
             
-            <div class="cadastro-box col-sm-6 col-sm-offset-3">
+            <div class="cadastro-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <div class="row">
                     <h4 class="dados-cliente col-md-10 col-md-offset-1">Dados do Cliente <small>*campos obrigatórios</small></h4>
                 </div>
@@ -41,11 +41,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-6">                            
+                        <div class="form-group col-xs-6 col-sm-6">                            
                             <input type="text" class="form-control" id="codigo" placeholder="Código do cliente" ng-model="pessoa.codigo" disabled="disabled">
                         </div>     
-                        <div class="form-group col-sm-6">                                                                                    
-                            <input type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF ou CNPJ" ng-model="pessoa.cpf_cnpj" ng-blur="validar(this)">
+                        <div class="form-group col-xs-6 col-sm-6">                                                                                    
+                            <input type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF ou CNPJ" ng-model="pessoa.cpf_cnpj" ng-blur="validaCampoCpfCnpj(this)" required>
                         </div>                                         
                     </div>
                     <div class="form-group">        
@@ -62,13 +62,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-6"> 
+                        <div class="form-group col-xs-6 col-sm-6"> 
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></span>
                                 <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" ng-model="pessoa.telefone" ng-pattern="validacao_telefone" onkeypress="return BloquearEspaco(event)" required>
                             </div>                           
                         </div>     
-                        <div class="form-group col-sm-6">  
+                        <div class="form-group col-xs-6 col-sm-6">  
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fas fa-phone"></i></span>
                                 <input type="text" class="form-control" name="residencial" id="residencial" placeholder="Residencial" ng-model="pessoa.residencial" onkeypress="return BloquearEspaco(event)">                            
@@ -76,7 +76,7 @@
                         </div>                   
                     </div>
                     <div class="row">                        
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-xs-6 col-sm-4">
                             <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" ng-model="pessoa.cep" ng-pattern="validacao_somente_numeros" ng-minlength="8" ng-maxlength="8" onkeypress="return BloquearEspaco(event)" required>                                
                         </div>                                             
                     </div>
@@ -88,10 +88,10 @@
                         {{pessoa.rua}}                
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-4">                                                      
+                        <div class="form-group col-xs-6 col-sm-4">                                                      
                             <input type="text" class="form-control" name="numero_casa" id="numero_casa" placeholder="Número" ng-model="pessoa.numero_casa" ng-pattern="validacao_somente_numeros" onkeypress="return BloquearEspaco(event)" required>                            
                         </div>                                               
-                        <div class="form-group col-sm-4">                                                    
+                        <div class="form-group col-xs-6 col-sm-4">                                                    
                             <input type="text" class="form-control" name="complemento" id="compl" placeholder="Complemento" ng-model="pessoa.complemento">                            
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                         <div class="form-group col-sm-6">                                                 
                             <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" ng-model="pessoa.cidade" required>                            
                         </div>
-                        <div class="form-group col-sm-2">                                                 
+                        <div class="form-group col-xs-6 col-sm-2">                                                 
                             <input type="text" class="form-control" name="uf" id="uf" placeholder="UF" ng-model="pessoa.uf" ng-pattern="validacao_somente_letras" required>                            
                         </div>
                     </div>
@@ -180,7 +180,7 @@
                     <br>
                     <div class="row">
                         <div class="form-group text-align-center">
-                            <button type="submit" class="btn btn-default btn-sm btn-fix-size" n-disabled="formulario.$invalid">
+                            <button type="submit" class="btn btn-default btn-sm btn-fix-size" ng-disabled="formulario.$invalid">
                                 <span class="" title="Gravar" alt="Gravar">Gravar</span>
                             </button>
                             <button type="submit" class="btn btn-default btn-sm btn-fix-size">
@@ -195,8 +195,7 @@
 
     <script src="lib/lib.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/validacao_cpf_cnpj.js"></script>
+    <script src="js/index.js"></script>    
     <script src="js/consulta_cep.js"></script>
     <script src="js/controllers/index-controller.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
