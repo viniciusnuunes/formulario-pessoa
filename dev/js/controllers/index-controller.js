@@ -4,24 +4,31 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
 
     $scope.teste = "vinicius"
     $scope.validacao_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    $scope.nomevalidacao_somente_letras_com_caracter_especial = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/
     $scope.validacao_somente_letras = /^[a-zA-Z ]{1,25}$/;
     $scope.validacao_somente_numeros = /^[0-9]*$/;
     $scope.validacao_telefone = /^[0-9]{8,9}$/;    
     $scope.pessoa = {
         codigo: "P101547278",
-        cpf_cnpj: "11015472787",
-        nome_completo: "Vinicius Nunes",
-        email: "exemplo@teste.com",
+        cpf_cnpj: "",
+        nome: "Vinícius Nunes",
+        email: "exemplo@ideia.com.br",
         telefone: "980346645",
         residencial: "",
-        cep: "22733150",
-        rua: "A",
-        numero_casa: "102",
-        bairro: "Tanque",
+        cep: "22755150",
+        rua: "",
+        numero_casa: "",
+        bairro: "",
         complemento: "",        
-        cidade: "Rio de Janeiro",
-        uf: "RJ"
+        cidade: "",
+        uf: ""
     };
+
+    $scope.reset = function(){        
+        angular.copy({}, $scope.pessoa);
+        $scope.formulario.$setPristine();
+        $scope.formulario.$setUntouched();
+    }
 
     $scope.criarCliente = function(){
         console.log($scope.formulario);
@@ -31,11 +38,9 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
     $scope.validaCampoCpfCnpj = function(obj) {
         valor = (obj.pessoa.cpf_cnpj).replace(/\D/g,'');
         tam = valor.length;
-        console.log(valor);
-        console.log(tam);
 
         if(!(tam == 11 || tam == 14)) {
-            $window.alert("Dígitos Inválidos")
+            // $window.alert("Dígitos Inválidos")
             $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
             return false;
         }
@@ -43,7 +48,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
         // se for CPF
         if(tam == 11) {
             if(!this.validaCPF(valor)) {
-                $window.alert("O CPF " + valor + " não é válido");
+                // $window.alert("O CPF " + valor + " não é válido");
                 $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
                 return false;
             }
@@ -56,7 +61,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
         // se for CNPJ
         if(tam == 14) {
             if(!this.validaCNPJ(valor)) {
-                $window.alert("O CNPJ " + valor + " não é válido");
+                // $window.alert("O CNPJ " + valor + " não é válido");
                 $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
                 return false
             }
@@ -131,19 +136,68 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
 
     // }, function errorCallBack(response) {
     //     console.log('Algo deu errado: ', response);
-    // });        
+    // });          
+    
 
-    // $http({
-    //     method: 'GET',
-    //     url: baseUrl
-    // }).then(function successCallback(response){
-    //     $scope.resultado = response.data;
-    //     console.log('Resultado: ', response);
+    $scope.consultaCep = function(obj){
+        
+        // nova variável cep somente com dígitos
+        cep = obj.pessoa.cep
 
-    // }, function errorCallBack(response){       
-    //     $scope.resultado = response.data; 
-    //     console.log('Algo deu errado: ', response);
+        limparFormulario = function(){
+            // limpa os valores do formulário do cep
+            $scope.pessoa.rua = ""
+            $scope.pessoa.bairro = ""
+            $scope.pessoa.cidade = ""
+            $scope.pessoa.uf = ""
+        }
 
-    // });
+        // verifica se o campo cep possui valor informado
+        if(cep != "") {
+
+            // expressão regular para validar o cep
+            var validacep = /^[0-9]{8}$/;
+
+            // valida o formato do CEP
+            if(validacep.test(cep)) {
+
+                // preenche os campos com "..." enquanto consulta o webservice
+                $scope.pessoa.rua = "..."
+                $scope.pessoa.bairro = "..."
+                $scope.pessoa.cidade = "..."
+                $scope.pessoa.uf = "..."
+
+                // consulta o webservice viacep.com.br
+                $http({
+                    method: 'GET',
+                    url: "https://viacep.com.br/ws/"+ cep +"/json/?callback="
+                }).then(function succsessCallback(response) {
+                    
+                    if(!("erro" in response.data)) {
+                        // atualiza os campos com os valores da consulta
+                        $scope.pessoa.rua = response.data.logradouro;
+                        $scope.pessoa.bairro = response.data.bairro;
+                        $scope.pessoa.cidade = response.data.localidade;
+                        $scope.pessoa.uf = response.data.uf;
+                    }
+                    else {
+                        // cep pesquisado não foi encontrado
+                        limparFormulario();
+                        $window.alert("Cep não encontrado.");                        
+                    }                    
+                });
+            } // end if
+            else {
+                // cep é inválido
+                limparFormulario();
+                $window.alert("Formato de CEP inválido");
+            } 
+        } // end if
+        else {
+            // cep sem valor, limpa formulário
+            limparFormulario();
+        }
+    } // end consultaCep
+    
 
 }]);

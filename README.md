@@ -5,7 +5,7 @@
 ##### Instalar o GulpJS globalmente (para Devs)
 > npm install -g gulp
 
-##### Ou somente no projeto
+##### Instalar no projeto
 >npm install gulp --save-dev
 
 ##### Executar o comando para instalar as dependências
