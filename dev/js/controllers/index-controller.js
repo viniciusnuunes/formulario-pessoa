@@ -10,7 +10,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
     $scope.validacao_telefone = /^[0-9]{8,9}$/;    
     $scope.pessoa = {
         codigo: "P101547278",
-        cpf_cnpj: "",
+        cpf_cnpj: "11015472788",
         nome: "Vinícius Nunes",
         email: "exemplo@ideia.com.br",
         telefone: "980346645",
@@ -30,7 +30,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
         $scope.formulario.$setUntouched();
     }
 
-    $scope.criarCliente = function(){
+    $scope.criarCliente = function(){        
         console.log($scope.formulario);
     };
 

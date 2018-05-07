@@ -22,7 +22,7 @@
                     <h4 class="dados-cliente col-md-10 col-md-offset-1">Dados do Cliente <small>*campos obrigatórios</small></h4>
                 </div>
                 <br>
-                <form class="form" name="formulario" ng-submit="criarCliente()" novalidate>                    
+                <form class="form" name="formulario" novalidate>                    
                     <div class="form-group">
                         <div class="input-group image-preview">
                             <input type="text" class="form-control image-preview-filename" disabled="disabled" placeholder="Inserir uma foto de perfil. Estilo retrato."> <!-- don't give a name === doesn't send on POST/GET -->
@@ -179,7 +179,7 @@
                     <br>
                     <div class="row">
                         <div class="form-group text-align-center">
-                            <button class="btn btn-default btn-sm btn-fix-size" ng-disabled="formulario.$invalid">
+                            <button class="btn btn-default btn-sm btn-fix-size" ng-click="criarCliente()" ng-disabled="formulario.$invalid">
                                 <span class="" title="Gravar" alt="Gravar">Gravar</span>
                             </button>
                             <button class="btn btn-default btn-sm btn-fix-size" ng-click="reset()">
