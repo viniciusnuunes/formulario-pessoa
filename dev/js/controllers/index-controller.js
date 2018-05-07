@@ -185,6 +185,9 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
                         limparFormulario();
                         $window.alert("Cep não encontrado.");                        
                     }                    
+                }, function errorCallback(response){
+                    $window.alert("O serviço de busca de CEP está indisponível no momento.")
+                    limparFormulario();
                 });
             } // end if
             else {
