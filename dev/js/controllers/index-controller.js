@@ -1,6 +1,6 @@
 app.controller('IndexController', ['$scope', '$http', '$window', function($scope, $http, $window){
 
-    baseUrl = 'http://187.111.10.182:8998/ideia/core/pessoa/11015472788'
+    
 
     $scope.teste = "vinicius"
     $scope.validacao_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -9,13 +9,13 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
     $scope.validacao_somente_numeros = /^[0-9]*$/;
     $scope.validacao_telefone = /^[0-9]{8,9}$/;    
     $scope.pessoa = {
-        codigo: "P101547278",
-        cpf_cnpj: "11015472788",
-        nome: "Vinícius Nunes",
-        email: "exemplo@ideia.com.br",
-        telefone: "980346645",
+        codigo: "",
+        cpf_cnpj: "",
+        nome: "",
+        email: "",
+        telefone: "",
         residencial: "",
-        cep: "22755150",
+        cep: "",
         rua: "",
         numero_casa: "",
         bairro: "",
@@ -23,6 +23,54 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
         cidade: "",
         uf: ""
     };
+
+    // Função que aplica a máscara ao CPF
+    $scope.maskCPF = function(CPF){
+        return CPF.substring(0,3)+"."+CPF.substring(3,6)+"."+CPF.substring(6,9)+"-"+CPF.substring(9,11);
+    }
+
+    // Função que aplica a máscara ao CNPJ
+    $scope.maskCNPJ = function(CNPJ){
+        return CNPJ.substring(0,2)+"."+CNPJ.substring(2,5)+"."+CNPJ.substring(5,8)+"/"+CNPJ.substring(8,12)+"-"+CNPJ.substring(12,14);	
+    }     
+
+    $scope.consultaCliente = function(obj){
+        cpf = (obj.pessoa.cpf_cnpj).replace(/\D/g,'');
+        console.log(cpf);
+        $http({
+            method: 'GET',
+            url: "http://187.111.10.182:8998/ideia/core/pessoa/" + cpf,
+            headers: {
+                Accept: "text/html"
+            }
+        })
+        .then(function successCallback(response) {
+                    
+            $scope.result = response.data.data.pessoa;
+    
+            $scope.pessoa.codigo = $scope.result[0].codigo;
+            $scope.pessoa.cpf_cnpj = $scope.result[0].cpf;
+            $scope.pessoa.nome = $scope.result[0].nome;
+            $scope.pessoa.email = $scope.result[0].emailcontato;
+            $scope.pessoa.telefone = $scope.result[0].telefone;
+            $scope.pessoa.residencial = $scope.result[0].telefonecontato;
+            $scope.pessoa.cep = $scope.result[0].enderecocep;
+            $scope.pessoa.rua = $scope.result[0].endereco;
+            $scope.pessoa.numero_casa = $scope.result[0].endereconumero;
+            $scope.pessoa.complemento = $scope.result[0].enderecocomplemento;
+            $scope.pessoa.bairro = $scope.result[0].enderecobairro;
+            $scope.pessoa.cidade = $scope.result[0].cidade_nome;
+            $scope.pessoa.uf = $scope.result[0].uf;
+            console.log('Resultado: ', $scope.result);   
+            
+            // $scope.pessoa.cpf_cnpj = this.maskCPF(cpf);
+    
+        }, function errorCallBack(response) {
+            console.log('Algo deu errado: ', response);            
+        });
+    }
+
+      
 
     $scope.reset = function(){        
         angular.copy({}, $scope.pessoa);
@@ -119,24 +167,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
         return true;
     }
 
-    // Função que aplica a máscara ao CPF
-    $scope.maskCPF = function(CPF){
-        return CPF.substring(0,3)+"."+CPF.substring(3,6)+"."+CPF.substring(6,9)+"-"+CPF.substring(9,11);
-    }
-
-    // Função que aplica a máscara ao CNPJ
-    $scope.maskCNPJ = function(CNPJ){
-        return CNPJ.substring(0,2)+"."+CNPJ.substring(2,5)+"."+CNPJ.substring(5,8)+"/"+CNPJ.substring(8,12)+"-"+CNPJ.substring(12,14);	
-    }
     
-    // $http.get(baseUrl).then(function successCallback(response) {
-                
-    //     $scope.resultado = response.data;
-    //     console.log('Resultado: ', response);
-
-    // }, function errorCallBack(response) {
-    //     console.log('Algo deu errado: ', response);
-    // });          
     
 
     $scope.consultaCep = function(obj){
