@@ -1,4 +1,4 @@
-app.controller('IndexController', ['$scope', '$http', '$window', function($scope, $http, $window){
+app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', function($scope, $http, $window, $rootScope){
 
     
 
@@ -9,19 +9,19 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
     $scope.validacao_somente_numeros = /^[0-9]*$/;
     $scope.validacao_telefone = /^[0-9]{8,9}$/;    
     $scope.pessoa = {
-        codigo: "",
-        cpf_cnpj: "",
-        nome: "",
-        email: "",
-        telefone: "",
-        residencial: "",
-        cep: "",
-        rua: "",
-        numero_casa: "",
-        bairro: "",
-        complemento: "",        
-        cidade: "",
-        uf: ""
+        codigo: null,
+        cpf_cnpj: null,
+        nome: null,
+        email: null,
+        telefone: null,
+        residencial: null,
+        cep: null,
+        rua: null,
+        numero_casa: null,
+        bairro: null,
+        complemento: null,        
+        cidade: null,
+        uf: null
     };
 
     // Função que aplica a máscara ao CPF
@@ -34,44 +34,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
         return CNPJ.substring(0,2)+"."+CNPJ.substring(2,5)+"."+CNPJ.substring(5,8)+"/"+CNPJ.substring(8,12)+"-"+CNPJ.substring(12,14);	
     }     
 
-    $scope.consultaCliente = function(obj){
-        cpf = (obj.pessoa.cpf_cnpj).replace(/\D/g,'');
-        console.log(cpf);
-        $http({
-            method: 'GET',
-            url: "http://187.111.10.182:8998/ideia/core/pessoa/" + cpf,
-            headers: {
-                Accept: "text/html"
-            }
-        })
-        .then(function successCallback(response) {
-                    
-            $scope.result = response.data.data.pessoa;
-    
-            $scope.pessoa.codigo = $scope.result[0].codigo;
-            $scope.pessoa.cpf_cnpj = $scope.result[0].cpf;
-            $scope.pessoa.nome = $scope.result[0].nome;
-            $scope.pessoa.email = $scope.result[0].emailcontato;
-            $scope.pessoa.telefone = $scope.result[0].telefone;
-            $scope.pessoa.residencial = $scope.result[0].telefonecontato;
-            $scope.pessoa.cep = $scope.result[0].enderecocep;
-            $scope.pessoa.rua = $scope.result[0].endereco;
-            $scope.pessoa.numero_casa = $scope.result[0].endereconumero;
-            $scope.pessoa.complemento = $scope.result[0].enderecocomplemento;
-            $scope.pessoa.bairro = $scope.result[0].enderecobairro;
-            $scope.pessoa.cidade = $scope.result[0].cidade_nome;
-            $scope.pessoa.uf = $scope.result[0].uf;
-            console.log('Resultado: ', $scope.result);   
-            
-            // $scope.pessoa.cpf_cnpj = this.maskCPF(cpf);
-    
-        }, function errorCallBack(response) {
-            console.log('Algo deu errado: ', response);            
-        });
-    }
-
-      
-
+    // Função para limpar o formulário
     $scope.reset = function(){        
         angular.copy({}, $scope.pessoa);
         $scope.formulario.$setPristine();
@@ -81,44 +44,6 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
     $scope.criarCliente = function(){        
         console.log($scope.formulario);
     };
-
-    // função de validação
-    $scope.validaCampoCpfCnpj = function(obj) {
-        valor = (obj.pessoa.cpf_cnpj).replace(/\D/g,'');
-        tam = valor.length;
-
-        if(!(tam == 11 || tam == 14)) {
-            // $window.alert("Dígitos Inválidos")
-            $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
-            return false;
-        }
-
-        // se for CPF
-        if(tam == 11) {
-            if(!this.validaCPF(valor)) {
-                // $window.alert("O CPF " + valor + " não é válido");
-                $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
-                return false;
-            }
-            // alert("CPF válido!")
-            $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", true);
-            obj.pessoa.cpf_cnpj = this.maskCPF(valor);
-            return true;
-        }
-
-        // se for CNPJ
-        if(tam == 14) {
-            if(!this.validaCNPJ(valor)) {
-                // $window.alert("O CNPJ " + valor + " não é válido");
-                $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
-                return false
-            }
-            // alert("CNPJ válido!")
-            $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", true);
-            obj.pessoa.cpf_cnpj = this.maskCNPJ(valor);
-            return true;
-        }
-    } // fim do validaCampoCpfCnpj
 
     // Algoritimo que valida o CPF
     $scope.validaCPF = function(s) {
@@ -167,8 +92,85 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
         return true;
     }
 
+    $scope.consultaCliente = function(obj){
+        cpf = (obj.pessoa.cpf_cnpj).replace(/\D/g,'');
+        
+        $http({
+            method: 'GET',
+            url: "http://187.111.10.182:8998/ideia/core/pessoa/" + cpf,
+            headers: {
+                Accept: "text/html"
+            }
+        })
+        .then(function successCallback(response) {
+
+            if (!("message" in response.data)) {
+                $scope.result = response.data.data.pessoa;
+
+                $scope.pessoa.codigo = $scope.result[0].codigo;
+                $scope.pessoa.cpf_cnpj = $scope.result[0].cpf;
+                $scope.pessoa.nome = $scope.result[0].nome;
+                $scope.pessoa.email = $scope.result[0].emailcontato;
+                $scope.pessoa.telefone = $scope.result[0].telefone;
+                $scope.pessoa.residencial = $scope.result[0].telefonecontato;
+                $scope.pessoa.cep = $scope.result[0].enderecocep;
+                $scope.pessoa.rua = $scope.result[0].endereco;
+                $scope.pessoa.numero_casa = $scope.result[0].endereconumero;
+                $scope.pessoa.complemento = $scope.result[0].enderecocomplemento;
+                $scope.pessoa.bairro = $scope.result[0].enderecobairro;
+                $scope.pessoa.cidade = $scope.result[0].cidade_nome;
+                $scope.pessoa.uf = $scope.result[0].uf;
+
+                console.log('Resultado: ', $scope.result);                   
+            } 
+            else {
+                console.log(response);
+                $window.alert("Nenhum dado encontrado")
+            }
     
-    
+        }, function errorCallBack(response) {
+            $window.alert("Serviço indisponível no momento")
+            console.log('Algo deu errado: ', response);            
+        });
+    }
+
+    // função de validação do CPF ou CNPJ
+    $scope.validaCampoCpfCnpj = function(obj) {
+        valor = (obj.pessoa.cpf_cnpj).replace(/\D/g,'');
+        tam = valor.length;
+
+        if(!(tam == 11 || tam == 14)) {
+            // $window.alert("Dígitos Inválidos")
+            $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
+            return false;
+        }
+
+        // se for CPF
+        if(tam == 11) {
+            if(!this.validaCPF(valor)) {
+                // $window.alert("O CPF " + valor + " não é válido");
+                $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
+                return false;
+            }
+            // alert("CPF válido!")
+            $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", true);
+            obj.pessoa.cpf_cnpj = this.maskCPF(valor);
+            return true;
+        }
+
+        // se for CNPJ
+        if(tam == 14) {
+            if(!this.validaCNPJ(valor)) {
+                // $window.alert("O CNPJ " + valor + " não é válido");
+                $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", false);
+                return false
+            }
+            // alert("CNPJ válido!")
+            $scope.formulario.cpf_cnpj.$setValidity("cpf_cnpj", true);
+            obj.pessoa.cpf_cnpj = this.maskCNPJ(valor);
+            return true;
+        }
+    } // fim do validaCampoCpfCnpj    
 
     $scope.consultaCep = function(obj){
         
@@ -231,10 +233,6 @@ app.controller('IndexController', ['$scope', '$http', '$window', function($scope
             // cep sem valor, limpa formulário
             limparFormulario();
         }
-    } // end consultaCep
-
-
-    
-    
+    } // end consultaCep    
 
 }]);
