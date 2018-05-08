@@ -110,6 +110,7 @@
                         <div class="alert alert-danger">
                             <span ng-if="formulario.cpf_cnpj.$error.required">É obrigatório informar o CPF ou CNPJ!</span>
                             <span ng-if="formulario.cpf_cnpj.$error.cpf_cnpj">Dígitos inválidos!</span>
+                            <span ng-if="formulario.cpf_cnpj.$error.pattern">Utilize somente números!</span>
                         </div>
                     </div>
 
@@ -179,7 +180,7 @@
                     <br>
                     <div class="row">
                         <div class="form-group text-align-center">
-                            <button class="btn btn-default btn-sm btn-fix-size" ng-click="criarCliente()" ng-disabled="formulario.$invalid" id="btnGravar">
+                            <button class="btn btn-default btn-sm btn-fix-size" ng-click="criarCliente()" g-disabled="formulario.$invalid" id="btnGravar">
                                 <span class="" title="Gravar" alt="Gravar">Gravar</span>
                             </button>
                             <button class="btn btn-default btn-sm btn-fix-size" ng-click="reset()" id="btnLimpar">

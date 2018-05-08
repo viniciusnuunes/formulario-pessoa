@@ -38,7 +38,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
     $scope.reset = function(){        
         angular.copy({}, $scope.pessoa);
         $scope.formulario.$setPristine();
-        $scope.formulario.$setUntouched();
+        $scope.formulario.$setUntouched();        
     }
 
     $scope.criarCliente = function(){        
@@ -94,7 +94,11 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
 
     $scope.consultaCliente = function(obj){
         cpf = (obj.pessoa.cpf_cnpj).replace(/\D/g,'');
-        
+
+        limparFormulario = function() {
+            angular.copy({}, $scope.pessoa);
+        }
+                
         $http({
             method: 'GET',
             url: "http://187.111.10.182:8998/ideia/core/pessoa/" + cpf,
@@ -108,7 +112,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
                 $scope.result = response.data.data.pessoa;
 
                 $scope.pessoa.codigo = $scope.result[0].codigo;
-                $scope.pessoa.cpf_cnpj = $scope.result[0].cpf;
+                // $scope.pessoa.cpf_cnpj = $scope.result[0].cpf;
                 $scope.pessoa.nome = $scope.result[0].nome;
                 $scope.pessoa.email = $scope.result[0].emailcontato;
                 $scope.pessoa.telefone = $scope.result[0].telefone;
@@ -124,7 +128,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
                 console.log('Resultado: ', $scope.result);                   
             } 
             else {
-                console.log(response);
+                console.log(response);                
                 $window.alert("Nenhum dado encontrado")
             }
     
@@ -177,7 +181,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
         // nova variável cep somente com dígitos
         cep = obj.pessoa.cep
 
-        limparFormulario = function(){
+        limparCamposEndereco = function(){
             // limpa os valores do formulário do cep
             $scope.pessoa.rua = ""
             $scope.pessoa.bairro = ""
@@ -215,23 +219,23 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
                     }
                     else {
                         // cep pesquisado não foi encontrado
-                        limparFormulario();
+                        limparCamposEndereco();
                         $window.alert("Cep não encontrado.");                        
                     }                    
                 }, function errorCallback(response){
                     $window.alert("O serviço de busca de CEP está indisponível no momento.")
-                    limparFormulario();
+                    limparCamposEndereco();
                 });
             } // end if
             else {
                 // cep é inválido
-                limparFormulario();
+                limparCamposEndereco();
                 $window.alert("Formato de CEP inválido");
             } 
         } // end if
         else {
             // cep sem valor, limpa formulário
-            limparFormulario();
+            limparCamposEndereco();
         }
     } // end consultaCep    
 
