@@ -12,7 +12,7 @@ var broswerSync = require('browser-sync'); /* utilizado para atualizar o browser
 var imagemin = require('gulp-imagemin'); /* minifica as imagens */
 var changed = require('gulp-changed'); /* verifica se já houve modificações nos arquivos */
 
-gulp.task('default', ['lib', 'img-compress', 'bootstrap', 'html-compiler', 'css-compiler', 'script-compiler', 'watch-tasks', 'server']);
+gulp.task('default', ['lib', 'img-compress', 'materialize', 'html-compiler', 'css-compiler', 'script-compiler', 'watch-tasks', 'server']);
 
 // iniciando o servidor
 gulp.task('server', function(){
@@ -58,11 +58,19 @@ gulp.task('bootstrap', function(){
     .pipe(gulp.dest('./dist/css/fonts'));
 });
 
+gulp.task('materialize', function(){
+    gulp.src('./node_modules/materialize-css/dist/css/materialize.min.css')
+    .pipe(gulp.dest('./dist/css/materialize-css'));
+    gulp.src('./node_modules/materialize-css/dist/js/materialize.min.js')
+    .pipe(gulp.dest('./dist/lib'));
+});
+
 /* copiando, concatenando, renomeando e minificando os arquivos JS para um arquivo */
 gulp.task('lib', function(){
     return gulp.src(['./node_modules/jquery/dist/jquery.min.js',
                      './node_modules/angular/angular.min.js',
-                     './node_modules/bootstrap/dist/js/bootstrap.min.js',])
+                    //  './node_modules/bootstrap/dist/js/bootstrap.min.js',
+                     ])
     .pipe(concat('lib.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./dist/lib'));

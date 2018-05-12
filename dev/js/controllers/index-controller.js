@@ -10,8 +10,8 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
     $scope.validacao_telefone = /^[0-9]{8,9}$/;    
     $scope.pessoa = {
         codigo: null,
-        cpf_cnpj: null,
-        nome: null,
+        cpf_cnpj: '11015472788',
+        nome: 'Vinicius',
         email: null,
         telefone: null,
         residencial: null,
@@ -110,6 +110,7 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
 
             if (!("message" in response.data)) {
                 $scope.result = response.data.data.pessoa;
+                angular.element(formulario.label).addClass("active");
 
                 $scope.pessoa.codigo = $scope.result[0].codigo;
                 // $scope.pessoa.cpf_cnpj = $scope.result[0].cpf;
