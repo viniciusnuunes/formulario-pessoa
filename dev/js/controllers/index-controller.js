@@ -109,9 +109,8 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
         .then(function successCallback(response) {
 
             if (!("message" in response.data)) {
-                $scope.result = response.data.data.pessoa;
-                angular.element(formulario.label).addClass("active");
-
+                $scope.result = response.data.data.pessoa;              
+                
                 $scope.pessoa.codigo = $scope.result[0].codigo;
                 // $scope.pessoa.cpf_cnpj = $scope.result[0].cpf;
                 $scope.pessoa.nome = $scope.result[0].nome;
@@ -126,6 +125,10 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
                 $scope.pessoa.cidade = $scope.result[0].cidade_nome;
                 $scope.pessoa.uf = $scope.result[0].uf;
 
+                $(document).ready(function() {
+                    M.updateTextFields();
+                  });
+                  
                 console.log('Resultado: ', $scope.result);                   
             } 
             else {

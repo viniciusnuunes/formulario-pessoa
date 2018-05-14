@@ -1,19 +1,8 @@
 .cadastro-box {
     box-shadow: 1px 1px 10px 1px grey;
     border-radius: 7px;
-    padding: 20px;
+    padding: px;
     margin-top: 25px;
-}
-
-.colorgraph {
-    height: 5px;
-    border-top: 0;
-    background: #c4e17f;
-    border-radius: 5px;
-    background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-    background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-    background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-    background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
 
 .dados-cliente {
@@ -48,13 +37,13 @@ input.ng-touched.ng-valid, input.ng-not-empty.ng-valid {
   border-color: green;
 }
 
-.image-preview-input {
+/* .image-preview-input {
     position: relative;
 	overflow: hidden;
 	margin: 0px;    
-    /* color: #333;
+    color: #333;
     background-color: #fff;
-    border-color: #ccc;     */
+    border-color: #ccc;    
 }
 .image-preview-input input[type=file] {
 	position: absolute;
@@ -69,4 +58,10 @@ input.ng-touched.ng-valid, input.ng-not-empty.ng-valid {
 }
 .image-preview-input-title {
     margin-left:2px;
+} */
+
+.input-field {
+   margin-top: 0rem;
+   margin-bottom: 0rem;
 }
+

@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    M.updateTextFields();
+  });
+
 // Função de bloqueio do espaço em alguns campos
 function BloquearEspaco(event) {
     var k = event ? event.which : window.event.keyCode;
@@ -18,10 +22,6 @@ function readURL(input) {
       reader.readAsDataURL(input.files[0]);
     }
 };
-
-$(document).ready(function() {
-    M.updateTextFields();
-  });
 
 // $(document).on('click', '#close-preview', function(){ 
 //     $('.image-preview').popover('hide');

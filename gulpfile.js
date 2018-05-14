@@ -61,14 +61,13 @@ gulp.task('bootstrap', function(){
 gulp.task('materialize', function(){
     gulp.src('./node_modules/materialize-css/dist/css/materialize.min.css')
     .pipe(gulp.dest('./dist/css/materialize-css'));
-    gulp.src('./node_modules/materialize-css/dist/js/materialize.min.js')
-    .pipe(gulp.dest('./dist/lib'));
 });
 
 /* copiando, concatenando, renomeando e minificando os arquivos JS para um arquivo */
 gulp.task('lib', function(){
     return gulp.src(['./node_modules/jquery/dist/jquery.min.js',
                      './node_modules/angular/angular.min.js',
+                     './node_modules/materialize-css/dist/js/materialize.min.js'
                     //  './node_modules/bootstrap/dist/js/bootstrap.min.js',
                      ])
     .pipe(concat('lib.js'))
