@@ -115,8 +115,8 @@ app.controller('IndexController', ['$scope', '$http', '$window', '$rootScope', f
                 // $scope.pessoa.cpf_cnpj = $scope.result[0].cpf;
                 $scope.pessoa.nome = $scope.result[0].nome;
                 $scope.pessoa.email = $scope.result[0].emailcontato;
-                $scope.pessoa.telefone = $scope.result[0].telefone;
-                $scope.pessoa.residencial = $scope.result[0].telefonecontato;
+                $scope.pessoa.telefone = $scope.result[0].telefonecontato;
+                $scope.pessoa.residencial = $scope.result[0].telefone;
                 $scope.pessoa.cep = $scope.result[0].enderecocep;
                 $scope.pessoa.rua = $scope.result[0].endereco;
                 $scope.pessoa.numero_casa = $scope.result[0].endereconumero;
